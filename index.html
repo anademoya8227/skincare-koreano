@@ -13,17 +13,20 @@
         }
 
         body {
+            /* Fondo degradado suave como el portafolio de Ana, manteniendo el rosa característico */
             background: linear-gradient(135deg, #fff5f7 0%, #fce4ec 100%);
             font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Arial', sans-serif;
             color: #2c2c2c;
             line-height: 1.5;
             padding: 2rem 1.5rem;
             /* Espacio extra abajo para que el carrito no tape los últimos productos */
-            padding-bottom: 6rem; 
+            padding-bottom: 6rem;
         }
 
+        /* Fuente elegante y legible */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+        /* Contenedor principal con max-width para mejor legibilidad */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -154,8 +157,10 @@
             width: fit-content;
         }
 
-        .stock-status.in-stock { background: #e0f2e9; color: #2b6e47; }
-        .stock-status.out-of-stock { background: #ffe6e5; color: #c23b2b; }
+        .stock-status.in-stock {
+            background: #e0f2e9;
+            color: #2b6e47;
+        }
 
         .description {
             font-size: 0.92rem;
@@ -218,7 +223,7 @@
         /* ========== CARRITO FLOTANTE ========== */
         #carrito-flotante {
             position: fixed;
-            bottom: -100%; /* Oculto por defecto */
+            bottom: -100%;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
@@ -314,31 +319,6 @@
             background: #1ebc5a;
         }
 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 700px) {
-            body { padding: 1rem; padding-bottom: 6rem; }
-            .products-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .brand-header h1 { font-size: 2rem; }
-            .product-info { padding: 1.2rem; }
-            .product h2 { font-size: 1.25rem; }
-            #carrito-flotante { width: 100%; border-radius: 24px 24px 0 0; }
-        }
-
-        @media (max-width: 480px) {
-            .product-image-wrapper { padding: 1rem; }
-            .product img { max-width: 110px; }
-            .price { font-size: 1.2rem; }
-        }
-
-        .footer-note {
-            text-align: center;
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #b48a9b;
-            border-top: 1px solid #f3cfdb;
-            padding-top: 1.8rem;
-        }
-        
         /* Botón flotante para reabrir carrito si lo cierran */
         #btn-abrir-carrito {
             position: fixed;
@@ -376,16 +356,48 @@
             border: 2px solid #b83b5e;
         }
 
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 700px) {
+            body { padding: 1rem; padding-bottom: 6rem; }
+            .products-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .brand-header h1 { font-size: 2rem; }
+            .product-info { padding: 1.2rem; }
+            .product h2 { font-size: 1.25rem; }
+            #carrito-flotante { width: 100%; border-radius: 24px 24px 0 0; }
+        }
+
+        @media (max-width: 480px) {
+            .product-image-wrapper { padding: 1rem; }
+            .product img { max-width: 110px; }
+            .price { font-size: 1.2rem; }
+        }
+
+        /* footer sutil como en el portfolio */
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #b48a9b;
+            border-top: 1px solid #f3cfdb;
+            padding-top: 1.8rem;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="brand-header">
+    <div class="brand-header" style="text-align: center; margin-bottom: 2rem;">
         <div style="display: inline-block; background: #b83b5e; color: white; font-size: 0.8rem; font-weight: 600; padding: 0.2rem 1.2rem; border-radius: 40px; margin-bottom: 1rem; letter-spacing: 1px;">
             ⚡ ÚLTIMAS UNIDADES DISPONIBLES
         </div>
-        <h1>✨ Skincare que calma y transforma ✨</h1>
-        <p>Elige tu favorito · Envíos en 24h</p>
+        
+        <h1 style="font-size: 2.4rem; font-weight: 700; background: linear-gradient(135deg, #b83b5e, #6a1b3a); background-clip: text; -webkit-background-clip: text; color: transparent; margin-bottom: 0.5rem;">
+            ✨ Skincare que calma y transforma ✨
+        </h1>
+        
+        <p style="font-size: 1.2rem; color: #a14a6b; font-weight: 500; margin-bottom: 1rem;">
+            Elige tu favorito · Envíos en 24h 
+        </p>
+        
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; font-size: 0.85rem; color: #6c4b5e; background: #fff0f3; width: fit-content; margin: 0 auto; padding: 0.4rem 1.2rem; border-radius: 60px;">
             <span>💎 Stock real</span>
             <span>📦 Productos 100% originales</span>
@@ -395,29 +407,266 @@
     
     <hr>
 
-    <h1 style="font-size: 1.8rem; font-weight: 500; margin-bottom: 0.5rem; color:#4a2c38;">🍃 Catálogo de Productos</h1>
+    <h1 style="font-size: 1.8rem; font-weight: 500; margin-bottom: 0.5rem; color:#4a2c38;">🍃 Catálogo de Productos Skincare</h1>
     <p style="margin-bottom: 2rem; color:#7c5c68;">Texturas ligeras, fórmulas efectivas — escoge tu favorito</p>
 
     <div class="products-grid">
         <div class="product available">
             <div class="product-image-wrapper">
-                <img src="purito-mighty-bamboo-panthenol-cream.jpg" alt="Purito Mighty Bamboo">
+                <a href="purito-mighty-bamboo-panthenol-cream.jpg" target="_blank">
+                    <img src="purito-mighty-bamboo-panthenol-cream.jpg" alt="Purito Mighty Bamboo Panthenol Cream">
+                </a>
             </div>
             <div class="product-info">
                 <h2>Purito Mighty Bamboo Panthenol Cream</h2>
-                <p class="price">$14.90</p>
+                <p class="price">$14,90</p>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description">Restaura la barrera cutánea, ideal para piel con acné y barrera alterada. Calma profundamente.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DHB49hgJtEM/" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Mighty Bamboo', 14.90)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Mighty Bamboo Panthenol Cream', 14.90)">🛍️ Añadir al carrito</button>
             </div>
         </div>
 
         <div class="product available">
             <div class="product-image-wrapper">
-                <img src="purito-wonder-releaf-centella-serum-unscented.jpg" alt="Purito Wonder Releaf">
+                <a href="purito-wonder-releaf-centella-serum-unscented.jpg" target="_blank">
+                    <img src="purito-wonder-releaf-centella-serum-unscented.jpg" alt="Purito Wonder Releaf Centella Serum">
+                </a>
             </div>
             <div class="product-info">
                 <h2>Purito Wonder Releaf Centella Serum Unscented</h2>
-                <p class="price">$23.00</p>
-                <p class="stock-status in-stock">✔ Disponible (Stock:
+                <p class="price">$23,00</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description">Tónico calmante para irritaciones por acné, depilación. Ideal pieles delicadas.</p>
+                <p class="video-link"><a href="https://www.instagram.com/reel/DFqCXR1uU0J/" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Wonder Releaf Centella Serum', 23.00)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="vt-cosmetics-cica-reti-a-essence-0-1.jpg" target="_blank">
+                    <img src="vt-cosmetics-cica-reti-a-essence-0-1.jpg" alt="VT Cosmetics Cica Reti-A Essence">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>VT Cosmetics Cica Reti-A Essence 0.1</h2>
+                <p class="price">$20,15</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description">Sérum cremoso de retinol 0.1% para renovar la piel, manchas y líneas de expresión.</p>
+                <p class="video-link"><a href="https://www.instagram.com/reel/DHO3r_4JpKz/" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reti-A Essence 0.1', 20.15)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="vt-cosmetics-cica-reti-a-reedle-shot-100.jpg" target="_blank">
+                    <img src="vt-cosmetics-cica-reti-a-reedle-shot-100.jpg" alt="VT Reedle Shot 100">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>VT Cosmetics Cica Reti-A Reedle Shot 100</h2>
+                <p class="price">$48,00</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description">Tecnología de microagujas, úsalo antes del skincare nocturno. A diario.</p>
+                <p class="video-link"><a href="https://www.instagram.com/reel/DHO3r_4JpKz/" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reti-A Reedle Shot 100', 48.00)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="vt-cosmetics-cica-reedle-shot-700.jpg" target="_blank">
+                    <img src="vt-cosmetics-cica-reedle-shot-700.jpg" alt="VT Reedle Shot 700">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>VT Cosmetics Cica Reedle Shot 700</h2>
+                <p class="price">$30,00</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description">Versión más intensa, 1-2 veces por semana. Microagujas para máxima absorción.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@kenziespicy/video/7439922890180594990" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reedle Shot 700', 30.00)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="anua-niacinamide-10-txa-4.jpg" target="_blank">
+                    <img src="anua-niacinamide-10-txa-4.jpg" alt="Anua Niacinamide 10% + TXA 4%">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Anua Niacinamide 10% + TXA 4%</h2>
+                <p class="price">$22,00</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description">Reduce poros, aclara manchas. Ideal piel grasa o mixta.</p>
+                <p class="video-link"><a href="https://www.instagram.com/reel/DIHwkSqO3KK/" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Anua Niacinamide 10% + TXA 4%', 22.00)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="tocobo-vita-glazed-lip-mask.jpg" target="_blank">
+                    <img src="tocobo-vita-glazed-lip-mask.jpg" alt="Tocobo Lip Mask">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Tocobo Vita Glazed Lip Mask</h2>
+                <p class="price">$12,80</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description">Hidratación profunda para labios resecos, aceite de oliva y aroma suave.</p>
+                <p class="video-link"><a href="https://www.instagram.com/reel/DHMM0I5JbN9/" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Tocobo Vita Glazed Lip Mask', 12.80)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="pyungkang-yul-atd-cream-blue-label.jpg" target="_blank">
+                    <img src="pyungkang-yul-atd-cream-blue-label.jpg" alt="Pyungkang Yul ATD Cream">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Pyungkang Yul ATD Cream Blue Label</h2>
+                <p class="price">$17,00</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description">Hidratación profunda y duradera. Ideal piel seca y normal.</p>
+                <p class="video-link"><a href="https://www.instagram.com/reel/DIHwkSqO3KK/" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Pyungkang Yul ATD Cream Blue Label', 17.00)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="purito-hydro-wave-deep-sea-serum.jpg" target="_blank">
+                    <img src="purito-hydro-wave-deep-sea-serum.jpg" alt="PURITO Hydro Wave Deep Sea Serum">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>PURITO Hydro Wave Deep Sea Serum</h2>
+                <p class="price">$15,95</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description">Hidratación rica en minerales, no graso. Ideal piel grasa y mixta.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@liswarmy/video/7390299461181902085" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('PURITO Hydro Wave Deep Sea Serum', 15.95)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        💖 Productos originales — Cuida tu piel con lo mejor del K-beauty
+    </div>
+</div>
+
+<button id="btn-abrir-carrito" onclick="mostrarCarrito()">
+    🛒 <span class="badge" id="badge-carrito">0</span>
+</button>
+
+<div id="carrito-flotante">
+    <div class="carrito-header">
+        <h3>Tu Pedido 🛍️</h3>
+        <button class="btn-cerrar" onclick="ocultarCarrito()">×</button>
+    </div>
+    <ul id="lista-carrito">
+        </ul>
+    <div class="carrito-total">
+        Total: $<span id="total-carrito">0.00</span>
+    </div>
+    <button class="btn-whatsapp" onclick="enviarPedido()">
+        Hacer pedido por WhatsApp 💬
+    </button>
+</div>
+
+<script>
+    // ⚠️ IMPORTANTE: REEMPLAZA EL NÚMERO ABAJO CON TU NÚMERO DE WHATSAPP REAL (CON CÓDIGO DE PAÍS, SIN +)
+    // Ejemplo para Venezuela: "584120000000"
+    const numeroWhatsApp = "584120000000"; 
+    
+    let carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+        carrito.push({ nombre: nombre, precio: precio });
+        actualizarCarrito();
+        mostrarCarrito();
+        
+        // Pequeño feedback visual
+        alert(`¡${nombre} añadido al carrito!`);
+    }
+
+    function eliminarDelCarrito(index) {
+        carrito.splice(index, 1);
+        actualizarCarrito();
+        if(carrito.length === 0) {
+            ocultarCarrito();
+        }
+    }
+
+    function actualizarCarrito() {
+        const lista = document.getElementById('lista-carrito');
+        const spanTotal = document.getElementById('total-carrito');
+        const badge = document.getElementById('badge-carrito');
+        
+        lista.innerHTML = '';
+        let total = 0;
+
+        carrito.forEach((item, index) => {
+            total += item.precio;
+            // Formatear precio para que se vea con dos decimales y coma
+            const precioMostrado = item.precio.toFixed(2).replace('.', ',');
+            
+            lista.innerHTML += `
+                <li>
+                    <span>${item.nombre}</span>
+                    <span>
+                        $${precioMostrado} 
+                        <span class="item-delete" onclick="eliminarDelCarrito(${index})">❌</span>
+                    </span>
+                </li>
+            `;
+        });
+
+        // Actualizar total y la burbuja del botón flotante
+        spanTotal.innerText = total.toFixed(2).replace('.', ',');
+        badge.innerText = carrito.length;
+
+        // Mostrar u ocultar el botón flotante circular
+        if(carrito.length > 0) {
+            document.getElementById('btn-abrir-carrito').style.display = 'flex';
+        } else {
+            document.getElementById('btn-abrir-carrito').style.display = 'none';
+        }
+    }
+
+    function mostrarCarrito() {
+        if(carrito.length > 0) {
+            document.getElementById('carrito-flotante').classList.add('activo');
+        }
+    }
+
+    function ocultarCarrito() {
+        document.getElementById('carrito-flotante').classList.remove('activo');
+    }
+
+    function enviarPedido() {
+        if (carrito.length === 0) return;
+
+        let total = 0;
+        let mensaje = "Hola Ana, quisiera hacer el siguiente pedido de Skincare:%0A%0A";
+        
+        carrito.forEach(item => {
+            total += item.precio;
+            mensaje += `🛒 ${item.nombre} - $${item.precio.toFixed(2).replace('.', ',')}%0A`; 
+        });
+        
+        mensaje += `%0A💰 *Total a pagar: $${total.toFixed(2).replace('.', ',')}*%0A%0A¿Qué métodos de pago tienen disponibles?`;
+
+        const url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
