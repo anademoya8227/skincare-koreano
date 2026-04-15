@@ -13,20 +13,16 @@
         }
 
         body {
-            /* Fondo degradado suave como el portafolio de Ana, manteniendo el rosa característico */
             background: linear-gradient(135deg, #fff5f7 0%, #fce4ec 100%);
             font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Arial', sans-serif;
             color: #2c2c2c;
             line-height: 1.5;
             padding: 2rem 1.5rem;
-            /* Espacio extra abajo para que el carrito no tape los últimos productos */
             padding-bottom: 6rem;
         }
 
-        /* Fuente elegante y legible */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        /* Contenedor principal con max-width para mejor legibilidad */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -97,6 +93,19 @@
             border-color: #f3a0b5;
         }
 
+        /* Producto no disponible (Agotado) */
+        .product.unavailable {
+            opacity: 0.75;
+            filter: grayscale(0.2);
+            background-color: #fafafa;
+        }
+        
+        .product.unavailable:hover {
+            transform: none;
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.1);
+            border-color: #fbe4ea;
+        }
+
         .product-image-wrapper {
             background: #faf0f3;
             display: flex;
@@ -115,7 +124,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
-        .product:hover img {
+        .product:not(.unavailable):hover img {
             transform: scale(1.02);
         }
 
@@ -157,10 +166,8 @@
             width: fit-content;
         }
 
-        .stock-status.in-stock {
-            background: #e0f2e9;
-            color: #2b6e47;
-        }
+        .stock-status.in-stock { background: #e0f2e9; color: #2b6e47; }
+        .stock-status.out-of-stock { background: #ffe6e5; color: #c23b2b; }
 
         .description {
             font-size: 0.92rem;
@@ -214,10 +221,17 @@
             box-shadow: 0 4px 10px rgba(184, 59, 94, 0.2);
         }
 
-        .btn-add-cart:hover {
+        .btn-add-cart:hover:not(:disabled) {
             transform: scale(1.02);
             box-shadow: 0 6px 15px rgba(184, 59, 94, 0.3);
             background: linear-gradient(135deg, #d4486f, #a03052);
+        }
+
+        .btn-add-cart:disabled {
+            background: #d4d4d4;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
         }
 
         /* ========== CARRITO FLOTANTE ========== */
@@ -372,7 +386,6 @@
             .price { font-size: 1.2rem; }
         }
 
-        /* footer sutil como en el portfolio */
         .footer-note {
             text-align: center;
             margin-top: 3rem;
@@ -419,75 +432,103 @@
             </div>
             <div class="product-info">
                 <h2>Purito Mighty Bamboo Panthenol Cream</h2>
-                <p class="price">$14,90</p>
+                <p class="price">$11,92</p>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Restaura la barrera cutánea, ideal para piel con acné y barrera alterada. Calma profundamente.</p>
+                <p class="description"><strong>Repara tu barrera de tu piel al instante.</strong> Esta crema de Purito calmará tus rojeces gracias al pantenol y extracto de bambú. Vas a sentir tu piel profundamente hidratada, fortalecida y protegida contra las agresiones diarias.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DHB49hgJtEM/" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Mighty Bamboo Panthenol Cream', 14.90)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Mighty Bamboo Panthenol Cream', 11.92)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product unavailable">
+            <div class="product-image-wrapper">
+                <a href="purito-oat-in-calming-gel-cream.jpg" target="_blank">
+                    <img src="purito-oat-in-calming-gel-cream.jpg" alt="Purito Oat In Calming Gel Cream">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Purito Oat In Calming Gel Cream</h2>
+                <p class="stock-status out-of-stock">❌ Agotado</p>
+                <p class="description"><strong>Alivio refrescante para tu piel sensible.</strong> Si tu piel sufre, te recomiendo este gel ligero con avena. Notarás un alivio inmediato sin sensación pesada. Es perfecto para que mantengas tu rostro calmado, fresco y súper equilibrado.</p>
+                <button class="btn-add-cart" disabled>Agotado</button>
             </div>
         </div>
 
         <div class="product available">
             <div class="product-image-wrapper">
                 <a href="purito-wonder-releaf-centella-serum-unscented.jpg" target="_blank">
-                    <img src="purito-wonder-releaf-centella-serum-unscented.jpg" alt="Purito Wonder Releaf Centella Serum">
+                    <img src="purito-wonder-releaf-centella-serum-unscented.jpg" alt="Purito Wonder Releaf Centella Serum Unscented">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Purito Wonder Releaf Centella Serum Unscented</h2>
-                <p class="price">$23,00</p>
+                <p class="price">$18,40</p>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Tónico calmante para irritaciones por acné, depilación. Ideal pieles delicadas.</p>
+                <p class="description"><strong>Dile adiós a las rojeces.</strong> Con este sérum sin fragancia, le darás a tu piel el poder regenerador de la centella asiática. Calma tus brotes y deja tu cutis uniforme.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DFqCXR1uU0J/" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Wonder Releaf Centella Serum', 23.00)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Wonder Releaf Centella Serum Unscented', 18.40)">🛍️ Añadir al carrito</button>
             </div>
         </div>
 
         <div class="product available">
             <div class="product-image-wrapper">
                 <a href="vt-cosmetics-cica-reti-a-essence-0-1.jpg" target="_blank">
-                    <img src="vt-cosmetics-cica-reti-a-essence-0-1.jpg" alt="VT Cosmetics Cica Reti-A Essence">
+                    <img src="vt-cosmetics-cica-reti-a-essence-0-1.jpg" alt="VT Cosmetics Cica Reti-A Essence 0.1">
                 </a>
             </div>
             <div class="product-info">
                 <h2>VT Cosmetics Cica Reti-A Essence 0.1</h2>
-                <p class="price">$20,15</p>
+                <p class="price">$16,12</p>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Sérum cremoso de retinol 0.1% para renovar la piel, manchas y líneas de expresión.</p>
+                <p class="description"><strong>Renueva tu piel sin irritarla.</strong> Te encantará este producto porque combina retinol suave y cica. Notarás cómo mejora la textura de tu piel, además de que reduce las líneas finas.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DHO3r_4JpKz/" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reti-A Essence 0.1', 20.15)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reti-A Essence 0.1', 16.12)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product unavailable">
+            <div class="product-image-wrapper">
+                <a href="vt-cosmetics-cica-reti-a-reedle-shot-100.jpg" target="_blank">
+                    <img src="vt-cosmetics-cica-reti-a-reedle-shot-100.jpg" alt="VT Cosmetics Cica Reti-A Reedle Shot 100">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>VT Cosmetics Cica Reti-A Reedle Shot 100</h2>
+                <p class="stock-status out-of-stock">❌ Agotado</p>
+                <p class="description"><strong>Despierta la renovación de tu rostro.</strong> Tu nuevo aliado nocturno. Sentirás un ligero cosquilleo mientras sus microagujas facilitan que los activos penetren profundamente. Vas a despertar con una textura mucho más suave y refinada.</p>
+                <p class="video-link"><a href="https://www.instagram.com/reel/DHO3r_4JpKz/" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" disabled>Agotado</button>
             </div>
         </div>
 
         <div class="product available">
             <div class="product-image-wrapper">
-                <a href="vt-cosmetics-cica-reti-a-reedle-shot-100.jpg" target="_blank">
-                    <img src="vt-cosmetics-cica-reti-a-reedle-shot-100.jpg" alt="VT Reedle Shot 100">
+                <a href="vt-cosmetics-cica-reti-a-reedle-shot-300.jpg" target="_blank">
+                    <img src="vt-cosmetics-cica-reti-a-reedle-shot-300.jpg" alt="VT Cosmetics Cica Reti-A Reedle Shot 300">
                 </a>
             </div>
             <div class="product-info">
-                <h2>VT Cosmetics Cica Reti-A Reedle Shot 100</h2>
-                <p class="price">$48,00</p>
+                <h2>VT Cosmetics Cica Reti-A Reedle Shot 300</h2>
+                <p class="price">$25,76</p>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Tecnología de microagujas, úsalo antes del skincare nocturno. A diario.</p>
-                <p class="video-link"><a href="https://www.instagram.com/reel/DHO3r_4JpKz/" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reti-A Reedle Shot 100', 48.00)">🛍️ Añadir al carrito</button>
+                <p class="description"><strong>Transformación profunda para tu textura.</strong> Si buscas resultados más intensos que con el Reedle Shot 100, elige este tratamiento. Notarás que acelera la regeneración celular de tu rostro, ayudándote a difuminar marcas y a lograr una piel sorprendentemente lisa.</p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reti-A Reedle Shot 300', 25.76)">🛍️ Añadir al carrito</button>
             </div>
         </div>
 
         <div class="product available">
             <div class="product-image-wrapper">
                 <a href="vt-cosmetics-cica-reedle-shot-700.jpg" target="_blank">
-                    <img src="vt-cosmetics-cica-reedle-shot-700.jpg" alt="VT Reedle Shot 700">
+                    <img src="vt-cosmetics-cica-reedle-shot-700.jpg" alt="VT Cosmetics Cica Reedle Shot 700">
                 </a>
             </div>
             <div class="product-info">
                 <h2>VT Cosmetics Cica Reedle Shot 700</h2>
-                <p class="price">$30,00</p>
-                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Versión más intensa, 1-2 veces por semana. Microagujas para máxima absorción.</p>
+                <p class="price">$24,00</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 2)</p>
+                <p class="description"><strong>El tratamiento de choque para tus marcas.</strong> Recomendable solo si tu piel ya está acostumbrada. Vas a experimentar una regeneración extrema que atacará tus cicatrices y poros, dejándote un cutis renovado como de clínica dermatológica.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@kenziespicy/video/7439922890180594990" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reedle Shot 700', 30.00)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reedle Shot 700', 24.00)">🛍️ Añadir al carrito</button>
             </div>
         </div>
 
@@ -499,47 +540,45 @@
             </div>
             <div class="product-info">
                 <h2>Anua Niacinamide 10% + TXA 4%</h2>
-                <p class="price">$22,00</p>
+                <p class="price">$17,60</p>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Reduce poros, aclara manchas. Ideal piel grasa o mixta.</p>
+                <p class="description"><strong>Borra las manchas de tu piel por completo.</strong> Este sérum será tu mejor arma contra la hiperpigmentación. El ácido tranexámico y la niacinamida iluminarán tu rostro, además de unificar tu tono maravillosamente.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DIHwkSqO3KK/" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('Anua Niacinamide 10% + TXA 4%', 22.00)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Anua Niacinamide 10% + TXA 4%', 17.60)">🛍️ Añadir al carrito</button>
             </div>
         </div>
 
-        <div class="product available">
+        <div class="product unavailable">
             <div class="product-image-wrapper">
                 <a href="tocobo-vita-glazed-lip-mask.jpg" target="_blank">
-                    <img src="tocobo-vita-glazed-lip-mask.jpg" alt="Tocobo Lip Mask">
+                    <img src="tocobo-vita-glazed-lip-mask.jpg" alt="Tocobo Vita Glazed Lip Mask">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Tocobo Vita Glazed Lip Mask</h2>
-                <p class="price">$12,80</p>
-                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Hidratación profunda para labios resecos, aceite de oliva y aroma suave.</p>
+                <p class="stock-status out-of-stock">❌ Agotado</p>
+                <p class="description"><strong>Labios de cristal extra jugosos.</strong> Si sufres de labios resecos, esta mascarilla nocturna los transformará. Vas a despertar con una boca súper suave, nutrida y con un acabado brillante y muy saludable.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DHMM0I5JbN9/" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('Tocobo Vita Glazed Lip Mask', 12.80)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" disabled>Agotado</button>
             </div>
         </div>
 
-        <div class="product available">
+        <div class="product unavailable">
             <div class="product-image-wrapper">
                 <a href="pyungkang-yul-atd-cream-blue-label.jpg" target="_blank">
-                    <img src="pyungkang-yul-atd-cream-blue-label.jpg" alt="Pyungkang Yul ATD Cream">
+                    <img src="pyungkang-yul-atd-cream-blue-label.jpg" alt="Pyungkang Yul ATD Cream Blue Label">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Pyungkang Yul ATD Cream Blue Label</h2>
-                <p class="price">$17,00</p>
-                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Hidratación profunda y duradera. Ideal piel seca y normal.</p>
+                <p class="stock-status out-of-stock">❌ Agotado</p>
+                <p class="description"><strong>El escudo definitivo contra la resequedad.</strong> Si tienes la piel extremadamente seca o descamada, esta crema será tu salvación. Sus ceramidas y péptidos sellan tu hidratación para devolverte el confort absoluto.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DIHwkSqO3KK/" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('Pyungkang Yul ATD Cream Blue Label', 17.00)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" disabled>Agotado</button>
             </div>
         </div>
 
-        <div class="product available">
+        <div class="product unavailable">
             <div class="product-image-wrapper">
                 <a href="purito-hydro-wave-deep-sea-serum.jpg" target="_blank">
                     <img src="purito-hydro-wave-deep-sea-serum.jpg" alt="PURITO Hydro Wave Deep Sea Serum">
@@ -547,13 +586,157 @@
             </div>
             <div class="product-info">
                 <h2>PURITO Hydro Wave Deep Sea Serum</h2>
-                <p class="price">$15,95</p>
-                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description">Hidratación rica en minerales, no graso. Ideal piel grasa y mixta.</p>
+                <p class="stock-status out-of-stock">❌ Agotado</p>
+                <p class="description"><strong>Una ola de hidratación profunda.</strong> Descubre cómo tu piel absorbe los minerales del agua de mar. Este sérum rellenará tus líneas de deshidratación, dejándote el rostro jugoso y lleno de vida.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@liswarmy/video/7390299461181902085" target="_blank">🎬 Ver video</a></p>
-                <button class="btn-add-cart" onclick="agregarAlCarrito('PURITO Hydro Wave Deep Sea Serum', 15.95)">🛍️ Añadir al carrito</button>
+                <button class="btn-add-cart" disabled>Agotado</button>
             </div>
         </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="skin-1004-madagascar-poremizing-fresh-ampoule.jpg" target="_blank">
+                    <img src="skin-1004-madagascar-poremizing-fresh-ampoule.jpg" alt="Skin 1004 Madagascar Poremizing Fresh Ampoule 100 ml">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Skin 1004 Madagascar Poremizing Fresh Ampoule 100 ml</h2>
+                <p class="price">$16,56</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description"><strong>Reduce tus poros al máximo.</strong> Si te preocupan los poros dilatados, esta ampolla te ayudará a minimizarlos. Notarás tu piel más firme y equilibrada gracias a la sal rosa y la centella.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@sweeline/video/7457334206436330757" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Skin 1004 Madagascar Poremizing Ampoule', 16.56)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="round-lab-birch-juice-intensive-moisturizing-cream.jpg" target="_blank">
+                    <img src="round-lab-birch-juice-intensive-moisturizing-cream.jpg" alt="Round Lab Birch Juice Intensive Moisturizing Cream">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Round Lab Birch Juice Intensive Moisturizing Cream</h2>
+                <p class="price">$32,56</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description"><strong>Rescata la barrera de tu piel.</strong> Esta crema intensa si tu piel está sedienta. Sentirás cómo la savia de abedul y el ácido hialurónico retienen la humedad y te devuelven toda la elasticidad perdida.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@anadmmakeup1/video/7614268661167131924" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Round Lab Intensive Cream', 32.56)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="round-lab-birch-juice-moisturizing-cream.jpg" target="_blank">
+                    <img src="round-lab-birch-juice-moisturizing-cream.jpg" alt="Round Lab Birch Juice Moisturizing Cream">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Round Lab Birch Juice Moisturizing Cream</h2>
+                <p class="price">$28,80</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description"><strong>Hidratación ligera como brisa fresca.</strong> Vas a disfrutar de esta textura en gel. Te dejará la piel fresca, rellenada y calmada sin ningún tipo de sensación grasa o pesada.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@anadmmakeup1/video/7572263743904582924" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Round Lab Moisturizing Cream', 28.80)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="round-lab-birch-juice-sunscreen-spf50.jpg" target="_blank">
+                    <img src="round-lab-birch-juice-sunscreen-spf50.jpg" alt="Round Lab Birch Juice Sunscreen SPF50">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Round Lab Birch Juice Sunscreen SPF50</h2>
+                <p class="price">$20,00</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description"><strong>Protección solar sin precedentes.</strong> Vas a olvidar que llevas protector solar. Su textura ligera te protegerá del sol mientras la savia de abedul mantiene tu piel iluminada y sana.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@anadmmakeup1/video/7614268661167131924" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Round Lab Sunscreen SPF50', 20.00)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="round-lab-birch-juice-1025-dokdo-toner.jpg" target="_blank">
+                    <img src="round-lab-birch-juice-1025-dokdo-toner.jpg" alt="Round Lab Birch Juice 1025 Dokdo Toner">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Round Lab Birch Juice 1025 Dokdo Toner</h2>
+                <p class="price">$20,80</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description"><strong>Un nuevo comienzo para tu rostro.</strong> Este tónico transformará tu textura. Sus minerales exfolian suavemente, preparando tu piel para que absorba toda tu rutina de skincare.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@anadmmakeup1/video/7614268661167131924" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Round Lab Dokdo Toner', 20.80)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="round-lab-camelia-deep-colagen-mask.jpg" target="_blank">
+                    <img src="round-lab-camelia-deep-colagen-mask.jpg" alt="Round Lab Camelia Deep Colagen Mask">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Round Lab Camelia Deep Colagen Mask</h2>
+                <p class="price">$4,80</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 2)</p>
+                <p class="description"><strong>Firmeza y juventud en minutos.</strong> Te sorprenderá la nutrición intensiva de esta mascarilla. Sentirás cómo el colágeno y el extracto de camelia devuelven la elasticidad a tu rostro, dejándote una apariencia rejuvenecida y sumamente tersa.</p>
+                <p class="video-link"><a href="https://www.instagram.com/reel/DQ9f1t1jpkj/" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Round Lab Camelia Colagen Mask', 4.80)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="missha-time-revolution-night-repare-ampoule.jpg" target="_blank">
+                    <img src="missha-time-revolution-night-repare-ampoule.jpg" alt="Missha Time Revolution Night Repare Ampoule">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Missha Time Revolution Night Repare Ampoule</h2>
+                <p class="price">$24,88</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description"><strong>El descanso que tu piel necesita.</strong> Esta ampolla trabaja mientras duermes. Al despertar, verás cómo sus probióticos mejoran tu elasticidad y luminosidad, reduciendo visiblemente tus signos de fatiga y envejecimiento.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@jossbyme/video/7541195702186118455" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Missha Night Repare Ampoule', 24.88)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="bumble-bumble-thickening-foam.jpg" target="_blank">
+                    <img src="bumble-bumble-thickening-foam.jpg" alt="Bumble & bumble Thickening Foam">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Bumble & bumble Thickening Foam</h2>
+                <p class="price">$28,00</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description"><strong>Volumen espectacular para tu cabello desde la raíz.</strong> Si sientes tu cabello fino, esta espuma cambiará tu peinado. Lograrás un cuerpo y grosor increíbles sin apelmazar, dándote ese volumen manejable y duradero que tanto buscas.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@tusyastrizh/video/7610072659048533279" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Bumble & bumble Thickening Foam', 28.00)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
+        <div class="product available">
+            <div class="product-image-wrapper">
+                <a href="purito-mighty-bamboo-panthenol-cleanser.jpg" target="_blank">
+                    <img src="purito-mighty-bamboo-panthenol-cleanser.jpg" alt="Purito Mighty Bamboo Panthenol Cleanser">
+                </a>
+            </div>
+            <div class="product-info">
+                <h2>Purito Mighty Bamboo Panthenol Cleanser</h2>
+                <p class="price">$11,20</p>
+                <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
+                <p class="description"><strong>Purito Mighty Bamboo Panthenol Cleanser.</strong> Este limpiador eliminará las impurezas de tu rostro mientras el pantenol y el bambú protegen tu barrera cutánea. Sentirás tu piel súper limpia, fresca y profundamente hidratada.</p>
+                <p class="video-link"><a href="https://www.tiktok.com/@anappro/video/7572367850053143838" target="_blank">🎬 Ver video</a></p>
+                <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Mighty Bamboo Cleanser', 11.20)">🛍️ Añadir al carrito</button>
+            </div>
+        </div>
+
     </div>
 
     <div class="footer-note">
