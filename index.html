@@ -113,6 +113,7 @@
             justify-content: center;
             padding: 1.5rem;
             border-bottom: 1px solid #fae2ea;
+            position: relative;
         }
 
         .product img {
@@ -126,6 +127,22 @@
 
         .product:not(.unavailable):hover img {
             transform: scale(1.02);
+        }
+
+        /* Badge de descuento flotante */
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 2;
         }
 
         .product-info {
@@ -144,16 +161,36 @@
             line-height: 1.3;
         }
 
-        .price {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: #b83b5e;
+        /* Contenedor de precios con oferta */
+        .price-container {
             margin-bottom: 0.5rem;
-            display: inline-block;
-            background: #fff0f3;
-            padding: 0.1rem 0.8rem;
-            border-radius: 40px;
-            width: fit-content;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #aaa;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .new-price {
+            color: #b83b5e;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .discount-text {
+            background: #e91e63;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
         }
 
         .stock-status {
@@ -333,7 +370,7 @@
             background: #1ebc5a;
         }
 
-        /* Botón flotante para reabrir carrito si lo cierran */
+        /* Botón flotante para reabrir carrito */
         #btn-abrir-carrito {
             position: fixed;
             bottom: 20px;
@@ -383,7 +420,7 @@
         @media (max-width: 480px) {
             .product-image-wrapper { padding: 1rem; }
             .product img { max-width: 110px; }
-            .price { font-size: 1.2rem; }
+            .new-price { font-size: 1.2rem; }
         }
 
         .footer-note {
@@ -393,6 +430,19 @@
             color: #b48a9b;
             border-top: 1px solid #f3cfdb;
             padding-top: 1.8rem;
+        }
+
+        /* Banner de oferta global */
+        .offer-banner {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -418,28 +468,40 @@
         </div>
     </div>
     
+    <!-- BANNER DE OFERTA GLOBAL 20% -->
+    <div class="offer-banner">
+        🎉 ¡20% DE DESCUENTO EN TODOS LOS PRODUCTOS! 🎉
+    </div>
+    
     <hr>
 
     <h1 style="font-size: 1.8rem; font-weight: 500; margin-bottom: 0.5rem; color:#4a2c38;">🍃 Catálogo de Productos Skincare</h1>
     <p style="margin-bottom: 2rem; color:#7c5c68;">Texturas ligeras, fórmulas efectivas — escoge tu favorito</p>
 
     <div class="products-grid">
+        <!-- PRODUCTO 1 - Purito Mighty Bamboo Panthenol Cream -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="purito-mighty-bamboo-panthenol-cream.jpg" target="_blank">
                     <img src="purito-mighty-bamboo-panthenol-cream.jpg" alt="Purito Mighty Bamboo Panthenol Cream">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Purito Mighty Bamboo Panthenol Cream</h2>
-                <p class="price">$11,92</p>
+                <div class="price-container">
+                    <span class="old-price">$14,90</span>
+                    <span class="new-price">$11,92</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
-                <p class="description"><strong>Repara tu barrera de tu piel al instante.</strong> Esta crema de Purito calmará tus rojeces gracias al pantenol y extracto de bambú. Vas a sentir tu piel profundamente hidratada, fortalecida y protegida contra las agresiones diarias.</p>
+                <p class="description"><strong>Repara la barrera de tu piel al instante.</strong> Esta crema de Purito calmará tus rojeces gracias al pantenol y extracto de bambú. Vas a sentir tu piel profundamente hidratada, fortalecida y protegida contra las agresiones diarias.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DHB49hgJtEM/" target="_blank">🎬 Ver video</a></p>
                 <button class="btn-add-cart" onclick="agregarAlCarrito('Purito Mighty Bamboo Panthenol Cream', 11.92)">🛍️ Añadir al carrito</button>
             </div>
         </div>
 
+        <!-- PRODUCTO 2 - AGOTADO -->
         <div class="product unavailable">
             <div class="product-image-wrapper">
                 <a href="purito-oat-in-calming-gel-cream.jpg" target="_blank">
@@ -454,15 +516,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 3 - Purito Wonder Releaf Centella Serum -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="purito-wonder-releaf-centella-serum-unscented.jpg" target="_blank">
                     <img src="purito-wonder-releaf-centella-serum-unscented.jpg" alt="Purito Wonder Releaf Centella Serum Unscented">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Purito Wonder Releaf Centella Serum Unscented</h2>
-                <p class="price">$18,40</p>
+                <div class="price-container">
+                    <span class="old-price">$23,00</span>
+                    <span class="new-price">$18,40</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Dile adiós a las rojeces.</strong> Con este sérum sin fragancia, le darás a tu piel el poder regenerador de la centella asiática. Calma tus brotes y deja tu cutis uniforme.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DFqCXR1uU0J/" target="_blank">🎬 Ver video</a></p>
@@ -470,15 +538,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 4 - VT Cica Reti-A Essence -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="vt-cosmetics-cica-reti-a-essence-0-1.jpg" target="_blank">
                     <img src="vt-cosmetics-cica-reti-a-essence-0-1.jpg" alt="VT Cosmetics Cica Reti-A Essence 0.1">
                 </a>
             </div>
             <div class="product-info">
                 <h2>VT Cosmetics Cica Reti-A Essence 0.1</h2>
-                <p class="price">$16,12</p>
+                <div class="price-container">
+                    <span class="old-price">$20,15</span>
+                    <span class="new-price">$16,12</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Renueva tu piel sin irritarla.</strong> Te encantará este producto porque combina retinol suave y cica. Notarás cómo mejora la textura de tu piel, además de que reduce las líneas finas.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DHO3r_4JpKz/" target="_blank">🎬 Ver video</a></p>
@@ -486,6 +560,7 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 5 - AGOTADO Reedle Shot 100 -->
         <div class="product unavailable">
             <div class="product-image-wrapper">
                 <a href="vt-cosmetics-cica-reti-a-reedle-shot-100.jpg" target="_blank">
@@ -501,30 +576,42 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 6 - VT Reedle Shot 300 -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="vt-cosmetics-cica-reti-a-reedle-shot-300.jpg" target="_blank">
                     <img src="vt-cosmetics-cica-reti-a-reedle-shot-300.jpg" alt="VT Cosmetics Cica Reti-A Reedle Shot 300">
                 </a>
             </div>
             <div class="product-info">
                 <h2>VT Cosmetics Cica Reti-A Reedle Shot 300</h2>
-                <p class="price">$25,76</p>
+                <div class="price-container">
+                    <span class="old-price">$32,20</span>
+                    <span class="new-price">$25,76</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Transformación profunda para tu textura.</strong> Si buscas resultados más intensos que con el Reedle Shot 100, elige este tratamiento. Notarás que acelera la regeneración celular de tu rostro, ayudándote a difuminar marcas y a lograr una piel sorprendentemente lisa.</p>
                 <button class="btn-add-cart" onclick="agregarAlCarrito('VT Cosmetics Cica Reti-A Reedle Shot 300', 25.76)">🛍️ Añadir al carrito</button>
             </div>
         </div>
 
+        <!-- PRODUCTO 7 - VT Reedle Shot 700 -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="vt-cosmetics-cica-reedle-shot-700.jpg" target="_blank">
                     <img src="vt-cosmetics-cica-reedle-shot-700.jpg" alt="VT Cosmetics Cica Reedle Shot 700">
                 </a>
             </div>
             <div class="product-info">
                 <h2>VT Cosmetics Cica Reedle Shot 700</h2>
-                <p class="price">$24,00</p>
+                <div class="price-container">
+                    <span class="old-price">$30,00</span>
+                    <span class="new-price">$24,00</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 2)</p>
                 <p class="description"><strong>El tratamiento de choque para tus marcas.</strong> Recomendable solo si tu piel ya está acostumbrada. Vas a experimentar una regeneración extrema que atacará tus cicatrices y poros, dejándote un cutis renovado como de clínica dermatológica.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@kenziespicy/video/7439922890180594990" target="_blank">🎬 Ver video</a></p>
@@ -532,15 +619,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 8 - Anua Niacinamide -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="anua-niacinamide-10-txa-4.jpg" target="_blank">
                     <img src="anua-niacinamide-10-txa-4.jpg" alt="Anua Niacinamide 10% + TXA 4%">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Anua Niacinamide 10% + TXA 4%</h2>
-                <p class="price">$17,60</p>
+                <div class="price-container">
+                    <span class="old-price">$22,00</span>
+                    <span class="new-price">$17,60</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Borra las manchas de tu piel por completo.</strong> Este sérum será tu mejor arma contra la hiperpigmentación. El ácido tranexámico y la niacinamida iluminarán tu rostro, además de unificar tu tono maravillosamente.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DIHwkSqO3KK/" target="_blank">🎬 Ver video</a></p>
@@ -548,6 +641,7 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 9 - AGOTADO Tocobo Lip Mask -->
         <div class="product unavailable">
             <div class="product-image-wrapper">
                 <a href="tocobo-vita-glazed-lip-mask.jpg" target="_blank">
@@ -563,6 +657,7 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 10 - AGOTADO Pyungkang Yul -->
         <div class="product unavailable">
             <div class="product-image-wrapper">
                 <a href="pyungkang-yul-atd-cream-blue-label.jpg" target="_blank">
@@ -578,6 +673,7 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 11 - AGOTADO Purito Hydro Wave -->
         <div class="product unavailable">
             <div class="product-image-wrapper">
                 <a href="purito-hydro-wave-deep-sea-serum.jpg" target="_blank">
@@ -593,15 +689,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 12 - Skin1004 Poremizing -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="skin-1004-madagascar-poremizing-fresh-ampoule.jpg" target="_blank">
                     <img src="skin-1004-madagascar-poremizing-fresh-ampoule.jpg" alt="Skin 1004 Madagascar Poremizing Fresh Ampoule 100 ml">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Skin 1004 Madagascar Poremizing Fresh Ampoule 100 ml</h2>
-                <p class="price">$16,56</p>
+                <div class="price-container">
+                    <span class="old-price">$20,70</span>
+                    <span class="new-price">$16,56</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Reduce tus poros al máximo.</strong> Si te preocupan los poros dilatados, esta ampolla te ayudará a minimizarlos. Notarás tu piel más firme y equilibrada gracias a la sal rosa y la centella.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@sweeline/video/7457334206436330757" target="_blank">🎬 Ver video</a></p>
@@ -609,15 +711,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 13 - Round Lab Intensive Cream -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="round-lab-birch-juice-intensive-moisturizing-cream.jpg" target="_blank">
                     <img src="round-lab-birch-juice-intensive-moisturizing-cream.jpg" alt="Round Lab Birch Juice Intensive Moisturizing Cream">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Round Lab Birch Juice Intensive Moisturizing Cream</h2>
-                <p class="price">$32,56</p>
+                <div class="price-container">
+                    <span class="old-price">$40,70</span>
+                    <span class="new-price">$32,56</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Rescata la barrera de tu piel.</strong> Esta crema intensa si tu piel está sedienta. Sentirás cómo la savia de abedul y el ácido hialurónico retienen la humedad y te devuelven toda la elasticidad perdida.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@anadmmakeup1/video/7614268661167131924" target="_blank">🎬 Ver video</a></p>
@@ -625,15 +733,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 14 - Round Lab Moisturizing Cream -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="round-lab-birch-juice-moisturizing-cream.jpg" target="_blank">
                     <img src="round-lab-birch-juice-moisturizing-cream.jpg" alt="Round Lab Birch Juice Moisturizing Cream">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Round Lab Birch Juice Moisturizing Cream</h2>
-                <p class="price">$28,80</p>
+                <div class="price-container">
+                    <span class="old-price">$36,00</span>
+                    <span class="new-price">$28,80</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Hidratación ligera como brisa fresca.</strong> Vas a disfrutar de esta textura en gel. Te dejará la piel fresca, rellenada y calmada sin ningún tipo de sensación grasa o pesada.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@anadmmakeup1/video/7572263743904582924" target="_blank">🎬 Ver video</a></p>
@@ -641,15 +755,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 15 - Round Lab Sunscreen -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="round-lab-birch-juice-sunscreen-spf50.jpg" target="_blank">
                     <img src="round-lab-birch-juice-sunscreen-spf50.jpg" alt="Round Lab Birch Juice Sunscreen SPF50">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Round Lab Birch Juice Sunscreen SPF50</h2>
-                <p class="price">$20,00</p>
+                <div class="price-container">
+                    <span class="old-price">$25,00</span>
+                    <span class="new-price">$20,00</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Protección solar sin precedentes.</strong> Vas a olvidar que llevas protector solar. Su textura ligera te protegerá del sol mientras la savia de abedul mantiene tu piel iluminada y sana.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@anadmmakeup1/video/7614268661167131924" target="_blank">🎬 Ver video</a></p>
@@ -657,15 +777,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 16 - Round Lab Dokdo Toner -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="round-lab-birch-juice-1025-dokdo-toner.jpg" target="_blank">
                     <img src="round-lab-birch-juice-1025-dokdo-toner.jpg" alt="Round Lab Birch Juice 1025 Dokdo Toner">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Round Lab Birch Juice 1025 Dokdo Toner</h2>
-                <p class="price">$20,80</p>
+                <div class="price-container">
+                    <span class="old-price">$26,00</span>
+                    <span class="new-price">$20,80</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Un nuevo comienzo para tu rostro.</strong> Este tónico transformará tu textura. Sus minerales exfolian suavemente, preparando tu piel para que absorba toda tu rutina de skincare.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@anadmmakeup1/video/7614268661167131924" target="_blank">🎬 Ver video</a></p>
@@ -673,15 +799,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 17 - Round Lab Camelia Mask -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="round-lab-camelia-deep-colagen-mask.jpg" target="_blank">
                     <img src="round-lab-camelia-deep-colagen-mask.jpg" alt="Round Lab Camelia Deep Colagen Mask">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Round Lab Camelia Deep Colagen Mask</h2>
-                <p class="price">$4,80</p>
+                <div class="price-container">
+                    <span class="old-price">$6,00</span>
+                    <span class="new-price">$4,80</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 2)</p>
                 <p class="description"><strong>Firmeza y juventud en minutos.</strong> Te sorprenderá la nutrición intensiva de esta mascarilla. Sentirás cómo el colágeno y el extracto de camelia devuelven la elasticidad a tu rostro, dejándote una apariencia rejuvenecida y sumamente tersa.</p>
                 <p class="video-link"><a href="https://www.instagram.com/reel/DQ9f1t1jpkj/" target="_blank">🎬 Ver video</a></p>
@@ -689,15 +821,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 18 - Missha Night Repair -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="missha-time-revolution-night-repare-ampoule.jpg" target="_blank">
                     <img src="missha-time-revolution-night-repare-ampoule.jpg" alt="Missha Time Revolution Night Repare Ampoule">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Missha Time Revolution Night Repare Ampoule</h2>
-                <p class="price">$24,88</p>
+                <div class="price-container">
+                    <span class="old-price">$31,10</span>
+                    <span class="new-price">$24,88</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>El descanso que tu piel necesita.</strong> Esta ampolla trabaja mientras duermes. Al despertar, verás cómo sus probióticos mejoran tu elasticidad y luminosidad, reduciendo visiblemente tus signos de fatiga y envejecimiento.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@jossbyme/video/7541195702186118455" target="_blank">🎬 Ver video</a></p>
@@ -705,15 +843,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 19 - Bumble & bumble Thickening Foam -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="bumble-bumble-thickening-foam.jpg" target="_blank">
                     <img src="bumble-bumble-thickening-foam.jpg" alt="Bumble & bumble Thickening Foam">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Bumble & bumble Thickening Foam</h2>
-                <p class="price">$28,00</p>
+                <div class="price-container">
+                    <span class="old-price">$35,00</span>
+                    <span class="new-price">$28,00</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Volumen espectacular para tu cabello desde la raíz.</strong> Si sientes tu cabello fino, esta espuma cambiará tu peinado. Lograrás un cuerpo y grosor increíbles sin apelmazar, dándote ese volumen manejable y duradero que tanto buscas.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@tusyastrizh/video/7610072659048533279" target="_blank">🎬 Ver video</a></p>
@@ -721,15 +865,21 @@
             </div>
         </div>
 
+        <!-- PRODUCTO 20 - Purito Mighty Bamboo Cleanser -->
         <div class="product available">
             <div class="product-image-wrapper">
+                <div class="discount-badge">-20%</div>
                 <a href="purito-mighty-bamboo-panthenol-cleanser.jpg" target="_blank">
                     <img src="purito-mighty-bamboo-panthenol-cleanser.jpg" alt="Purito Mighty Bamboo Panthenol Cleanser">
                 </a>
             </div>
             <div class="product-info">
                 <h2>Purito Mighty Bamboo Panthenol Cleanser</h2>
-                <p class="price">$11,20</p>
+                <div class="price-container">
+                    <span class="old-price">$14,00</span>
+                    <span class="new-price">$11,20</span>
+                    <span class="discount-text">20% OFF</span>
+                </div>
                 <p class="stock-status in-stock">✔ Disponible (Stock: 1)</p>
                 <p class="description"><strong>Purito Mighty Bamboo Panthenol Cleanser.</strong> Este limpiador eliminará las impurezas de tu rostro mientras el pantenol y el bambú protegen tu barrera cutánea. Sentirás tu piel súper limpia, fresca y profundamente hidratada.</p>
                 <p class="video-link"><a href="https://www.tiktok.com/@anappro/video/7572367850053143838" target="_blank">🎬 Ver video</a></p>
@@ -797,7 +947,6 @@
 
         carrito.forEach((item, index) => {
             total += item.precio;
-            // Formatear precio para que se vea con dos decimales y coma
             const precioMostrado = item.precio.toFixed(2).replace('.', ',');
             
             lista.innerHTML += `
@@ -811,11 +960,9 @@
             `;
         });
 
-        // Actualizar total y la burbuja del botón flotante
         spanTotal.innerText = total.toFixed(2).replace('.', ',');
         badge.innerText = carrito.length;
 
-        // Mostrar u ocultar el botón flotante circular
         if(carrito.length > 0) {
             document.getElementById('btn-abrir-carrito').style.display = 'flex';
         } else {
