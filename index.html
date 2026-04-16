@@ -981,7 +981,7 @@
         document.getElementById('carrito-flotante').classList.remove('activo');
     }
 
-    function enviarPedido() {
+   function enviarPedido() {
     if (carrito.length === 0) return;
 
     let total = 0;
@@ -989,14 +989,14 @@
     
     carrito.forEach(item => {
         total += item.precio;
-        mensaje += `&#128309; ${item.nombre} - $${item.precio.toFixed(2).replace('.', ',')}%0A`; 
+        mensaje += `🔵 ${item.nombre} - $${item.precio.toFixed(2).replace('.', ',')}%0A`; 
     });
-        
-         mensaje += `%0A&#9989; *Total a pagar: $${total.toFixed(2).replace('.', ',')}*%0A%0A`;
-         mensaje += `¿Qué métodos de pago tienen disponibles?`;
+    
+    mensaje += `%0A✅ *Total a pagar: $${total.toFixed(2).replace('.', ',')}*%0A%0A`;
+    mensaje += `¿Qué métodos de pago tienen disponibles?`;
 
-        const url = `https://wa.me/584248473326?text=${mensaje}`;
-        window.open(url, '_blank');
+    const url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+    window.open(url, '_blank');
     }
 </script>
 
