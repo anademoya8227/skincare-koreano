@@ -987,9 +987,16 @@
     let total = 0;
     let mensaje = "Hola Ana, quisiera hacer el siguiente pedido de Skincare:%0A%0A";
     
-carrito.forEach(item => { total += item.precio; mensaje += `🔵 ${item.nombre} - $${item.precio.toFixed(2).replace('.', ',')}%0A`; }); mensaje += `%0A✅ *Total a pagar: $${total.toFixed(2).replace('.', ',')}*%0A%0A`; mensaje += `¿Qué métodos de pago tienen disponibles?`;
-
-const url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`; window.open(url, '_blank'); }
+    carrito.forEach(item => {
+        total += item.precio;
+        mensaje += `🔵 ${item.nombre} - $${item.precio.toFixed(2).replace('.', ',')}%0A`; 
+    });
+    
+    mensaje += `%0A✅ *Total a pagar: $${total.toFixed(2).replace('.', ',')}*%0A%0A`;
+    mensaje += `¿Qué métodos de pago tienen disponibles?`;
+	
+	const url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+    window.open(url, '_blank');   
     }
 </script>
 
