@@ -987,20 +987,9 @@
     let total = 0;
     let mensaje = "Hola Ana, quisiera hacer el siguiente pedido de Skincare:%0A%0A";
     
-carrito.forEach(item => {
-    total += item.precio;
-    // Cambiamos %0A por \n (el salto de línea nativo)
-    mensaje += `🔵 ${item.nombre} - $${item.precio.toFixed(2).replace('.', ',')}\n`; 
-});
+carrito.forEach(item => { total += item.precio; mensaje += `🔵 ${item.nombre} - $${item.precio.toFixed(2).replace('.', ',')}%0A`; }); mensaje += `%0A✅ *Total a pagar: $${total.toFixed(2).replace('.', ',')}*%0A%0A`; mensaje += `¿Qué métodos de pago tienen disponibles?`;
 
-// Usamos \n nuevamente para los espacios
-mensaje += `\n✅ *Total a pagar: $${total.toFixed(2).replace('.', ',')}*\n\n`;
-mensaje += `¿Qué métodos de pago tienen disponibles?`;
-
-// Aquí ocurre la magia: encodeURIComponent convierte los emojis, espacios y \n al formato seguro para URLs
-const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
-window.open(url, '_blank');
+const url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`; window.open(url, '_blank'); }
     }
 </script>
 
